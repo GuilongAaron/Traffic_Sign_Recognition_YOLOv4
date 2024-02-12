@@ -209,7 +209,7 @@ if __name__ == "__main__":
     #   是否使用Cuda
     #   没有GPU可以设置成False
     # -------------------------------#
-    Cuda = True
+    Cuda = False
     # ------------------------------------------------------#
     #   是否对损失进行归一化，用于改变loss的大小
     #   用于决定计算最终loss是除上batch_size还是除上正样本数量
@@ -262,19 +262,19 @@ if __name__ == "__main__":
 
 
     # 想从头训练, 不使用预训练的权重, 就下面这段代码注释掉.
-    model_path = "model_data/yolo4_weights.pth"
+    # model_path = "model_data/yolo4_weights.pth"
     # model_path = "exp/exp_baseline/ckpt/best_weights.pth"
 
 
-    print('Loading weights into state dict...')
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(device)
-    model_dict = model.state_dict()
-    pretrained_dict = torch.load(model_path, map_location=device)["state_dict"]
-    pretrained_dict = {k: v for k, v in pretrained_dict.items() if np.shape(model_dict[k]) == np.shape(v)}
-    model_dict.update(pretrained_dict)
-    model.load_state_dict(model_dict)
-    print('Finished!')
+    # print('Loading weights into state dict...')
+    # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    # print(device)
+    # model_dict = model.state_dict()
+    # pretrained_dict = torch.load(model_path, map_location=device)["state_dict"]
+    # pretrained_dict = {k: v for k, v in pretrained_dict.items() if np.shape(model_dict[k]) == np.shape(v)}
+    # model_dict.update(pretrained_dict)
+    # model.load_state_dict(model_dict)
+    # print('Finished!')
 
     net = model.train()
 
