@@ -23,7 +23,12 @@ yolo_decodes = []
 confidence = 0.01
 iou = 0.5
 g_steps = 0
+# ----------------------------------------------------#
+#   获得图片路径和标签
+# ----------------------------------------------------#
 
+BASE_DIR = os.getcwd()
+data_dir = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), "600_ComputerVision", "yolov4-TT100k", "tt100k2016_part")
 
 # ---------------------------------------------------#
 #   获得类和先验框
@@ -290,10 +295,7 @@ if __name__ == "__main__":
         graph_inputs = torch.randn(1, 3, input_shape[0], input_shape[1]).type(torch.FloatTensor)
     summary.add_graph(model, graph_inputs)
 
-    # ----------------------------------------------------#
-    #   获得图片路径和标签
-    # ----------------------------------------------------#
-    data_dir = "tt100k2016_part"
+
 
     # ------------------------------------------------------#
     #   主干特征提取网络特征通用，冻结训练可以加快训练速度
