@@ -227,7 +227,7 @@ if __name__ == "__main__":
     #   训练前一定要修改classes_path，使其对应自己的数据集
     # ----------------------------------------------------#
     anchors_path = 'model_data/yolo_anchors.txt'
-    classes_path = 'model_data/tt100k_144_classes.txt'
+    classes_path = 'model_data/tt100k_117_classes.txt'
     # ------------------------------------------------------#
     #   Yolov4的tricks应用
     #   mosaic 马赛克数据增强 True or False 
