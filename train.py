@@ -30,11 +30,14 @@ g_steps = 0
 BASE_DIR = os.getcwd()
 data_dir = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), "600_ComputerVision", "yolov4-TT100k", "tt100k2016_part")
 
+
 # ---------------------------------------------------#
 #   获得类和先验框
 # ---------------------------------------------------#
 def get_classes(classes_path):
-    '''loads the classes'''
+    '''
+    loads the classes
+    '''
     with open(classes_path) as f:
         class_names = f.readlines()
     class_names = [c.strip() for c in class_names]
