@@ -7,7 +7,7 @@ This program fine-tunes YOLOv4 with tt100k datasets.
 
 ## image processing results
 
-Before detection: <br>
+Before detection: <br> 
 <div style = "text-align: center">
 <img src="jap03_origin.jpg" alt="Before detection" height = "30%" width = "30%"/><br>
 </div>
