@@ -13,20 +13,18 @@ from utils.utils import (DecodeBox, letterbox_image, non_max_suppression,
 
 """
 This script creates YOLO class.
+ 
+  model_path和classes_path to be modified
 
-
-  使用自己训练好的模型预测需要修改2个参数
-  model_path和classes_path都需要修改！
-  如果出现shape不匹配，一定要注意
-  训练时的model_path和classes_path参数的修改
 """
-
-
+BASE_DIR = os.getcwd()
+data_dir = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), "600_ComputerVision", "yolov4-TT100k", "tt100k2016_part")
+MODEL_PATH = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), "600_ComputerVision", "yolov4-TT100k", "model_data", "yolo4_weights.pth")
 class YOLO(object):
     _defaults = {
-        "model_path"        : 'model_data/best_weights.pth',
+        "model_path"        : MODEL_PATH,
         "anchors_path"      : 'model_data/yolo_anchors.txt',
-        "classes_path"      : 'model_data/tt100k_144_classes.txt',
+        "classes_path"      : 'model_data/tt100k_117_classes.txt',
         "model_image_size"  : (416, 416, 3),
         "confidence"        : 0.4,
         "iou"               : 0.4,
@@ -260,8 +258,9 @@ class YOLO(object):
                     top_ymax = top_ymax / self.model_image_size[0] * image_shape[0]
                     boxes = np.concatenate([top_ymin,top_xmin,top_ymax,top_xmax], axis=-1)
             
-            except:
-                pass
+            except Exception as e:
+                print("Unexpected error happened during training: ", e)
+
                 
         t1 = time.time()
         for _ in range(test_interval):
